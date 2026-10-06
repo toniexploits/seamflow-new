@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Customer Activity | SeamFlow Consulting</title>
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#061B48; --navy-soft:#0D2A66; --gold:#E6D7A2; --gold-light:#F3E9C4;
+    --gold-strong:#C9A44A; --gold-deep:#8A6A1C;
+    --grey:#5B6478; --line:rgba(6,27,72,0.13); --bg:#FAF6EE; --panel:#FFFFFF;
+    --danger:#C0392B; --warn:#F5A800; --ok:#1E8E5A;
+    --font-display:"Fraunces",Georgia,serif;
+    --font-text:"Manrope","Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--font-text);font-size:14.5px;line-height:1.5;background:var(--bg);color:#141B2D;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px 72px;}
+  :focus-visible{outline:3px solid var(--gold-strong);outline-offset:2px;border-radius:4px;}
+
+  .hdr{background:var(--navy);color:#fff;padding:18px 0;border-bottom:3px solid var(--gold);margin-bottom:36px;}
+  .hdr .wrap{padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px 24px;}
+  .hdr .brand{display:flex;align-items:center;gap:22px;}
+  .hdr .brand img{height:58px;width:auto;display:block;margin-left:-4px;}
+  .hdr .brand > div{padding-left:22px;border-left:1px solid rgba(230,215,162,.3);}
+  .hdr h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:-0.01em;line-height:1.15;}
+  .hdr .sub{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:4px;}
+
+  .btn{border:1.5px solid transparent;border-radius:999px;padding:12px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,border-color .2s,transform .2s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--navy);color:#fff;}
+  .btn-primary:hover{background:var(--navy-soft);}
+  .btn-gold{background:var(--gold);color:var(--navy);}
+  .btn-gold:hover{background:var(--gold-light);}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--line);}
+  .hdr .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3);}
+  .hdr .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+  #gate{max-width:420px;margin:72px auto;text-align:center;padding:40px 32px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px rgba(6,27,72,.08);}
+  #gate h2{font-family:var(--font-display);font-weight:400;color:var(--navy);font-size:28px;letter-spacing:-0.01em;margin:0 0 10px;}
+  #gate p{color:var(--grey);font-size:14px;margin:0 0 24px;}
+  #gate input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);font-size:16px;text-align:center;margin-bottom:14px;font-family:inherit;background:var(--bg);}
+  #gate input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(230,215,162,.5);}
+  #gate .err{color:var(--danger);font-size:13px;margin-top:12px;display:none;}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:0 28px;margin-bottom:28px;border-bottom:1px solid var(--line);}
+  .tab{background:none;border:none;padding:12px 0;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);cursor:pointer;font-family:inherit;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:color .2s;}
+  .tab:hover{color:var(--navy);}
+  .tab.active{color:var(--navy);border-bottom-color:var(--gold-strong);}
+  .usage-type{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;}
+  .usage-type.access{background:#EEF1F8;color:var(--navy);}
+  .usage-type.view{background:#FFFBF0;color:var(--gold-deep);}
+
+  .enquiry{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 26px;margin-bottom:14px;}
+  .enquiry-head{display:flex;justify-content:space-between;align-items:flex-start;gap:6px 20px;flex-wrap:wrap;}
+  .enquiry .who{font-family:var(--font-display);font-size:21px;color:var(--navy);letter-spacing:-0.01em;line-height:1.2;}
+  .enquiry .meta{font-size:13px;color:var(--grey);margin-top:4px;}
+  .enquiry .when{font-size:12.5px;color:var(--grey);white-space:nowrap;}
+  .enquiry-contact{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:14px;font-weight:600;margin:14px 0 0;}
+  .enquiry-contact a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold-strong);text-underline-offset:3px;}
+  .enquiry-msg{margin:14px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;}
+
+  .grant-form{max-width:680px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 30px 30px;}
+  .grant-form .field{margin-bottom:20px;}
+  .grant-form label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+  .grant-form input[type=text],.grant-form input[type=email]{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;background:var(--bg);color:inherit;}
+  .grant-form input[type=text]:focus,.grant-form input[type=email]:focus{outline:none;border-color:var(--navy);background:#fff;box-shadow:0 0 0 4px rgba(230,215,162,.5);}
+  .grant-form input[type=checkbox],.grant-form input[type=radio]{accent-color:var(--navy);width:16px;height:16px;flex:none;margin:0;}
+  .grant-form .checks{display:flex;gap:22px;flex-wrap:wrap;}
+  .grant-form .checks label{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:#141B2D;margin:0;}
+  .grant-form .choice{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:#141B2D;margin-bottom:10px;}
+  .dept-picker{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:8px;background:var(--bg);}
+  .dept-picker .cat{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin:18px 0 10px;}
+  .dept-picker .cat:first-child{margin-top:0;}
+  .dept-picker .dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:9px 18px;}
+  .dept-picker label{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;color:#141B2D;margin:0;}
+  .grant-links{margin-top:22px;border:1px solid var(--gold-strong);border-radius:14px;padding:18px 20px;background:#FFFBF0;}
+  .grant-links .link-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--navy);}
+  .grant-links .link-row:last-child{border-bottom:none;padding-bottom:0;}
+  .grant-links code{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:12.5px;background:#fff;border:1px solid var(--line);padding:8px 10px;border-radius:8px;word-break:break-all;color:#141B2D;user-select:all;}
+  .grant-err{color:var(--danger);font-size:13px;margin-top:12px;display:none;}
+
+  .table-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{text-align:left;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);border-bottom:1px solid var(--line);padding:16px 18px;white-space:nowrap;}
+  td{padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tr.row{cursor:pointer;transition:background .15s;}
+  tr.row:hover{background:#FFFBF0;}
+  .score-pill{display:inline-block;padding:4px 11px;border-radius:999px;font-weight:800;font-size:12.5px;white-space:nowrap;}
+  .empty{color:var(--grey);font-size:14.5px;padding:56px 24px;text-align:center;background:var(--panel);border:1px dashed var(--line);border-radius:20px;}
+
+  .report-hdr{border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin-bottom:8px;background:var(--panel);}
+  .report-hdr .facility{font-family:var(--font-display);font-size:30px;font-weight:400;letter-spacing:-0.015em;color:var(--navy);margin-bottom:6px;line-height:1.15;}
+  .report-hdr .meta{font-size:13.5px;color:var(--grey);line-height:1.7;}
+  .gauge-wrap{display:flex;flex-direction:column;align-items:center;padding:28px 0 12px;}
+  .gauge-score{font-family:var(--font-display);font-size:72px;font-weight:300;letter-spacing:-0.03em;color:var(--navy);line-height:1;}
+  .gauge-score span{font-family:var(--font-text);font-size:18px;font-weight:700;letter-spacing:0;color:var(--grey);}
+  .maturity-badge{margin-top:14px;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;}
+  .priority-box{border-left:4px solid var(--danger);background:#FBEEEC;padding:16px 18px;border-radius:8px;margin:20px 0;}
+  .priority-box .p-label{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--danger);margin-bottom:8px;}
+  .priority-box ol{margin:0;padding-left:20px;}
+  .priority-box li{font-size:14px;color:#3a1f1c;line-height:1.5;margin-bottom:4px;}
+  .section-label{font-family:var(--font-display);font-weight:400;color:var(--navy);font-size:22px;margin:32px 0 16px;}
+  .domain-bar-row{margin-bottom:16px;}
+  .domain-bar-head{display:flex;justify-content:space-between;gap:12px;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+  .domain-bar-head .pct{color:var(--grey);font-weight:700;}
+  .bar-track{height:9px;background:var(--line);border-radius:6px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:6px;}
+  .actions{display:flex;gap:10px;margin-top:30px;}
+
+  @media (max-width:560px){
+    .hdr .brand img{height:46px;}
+    .hdr .brand{gap:14px;}
+    .hdr .brand > div{padding-left:14px;}
+    .hdr h1{font-size:20px;}
+    .grant-form{padding:22px 18px;}
+    th,td{padding:12px 12px;}
+  }
+  @media print{
+    .hdr, .no-print{display:none !important;}
+    body{background:#fff;}
+    .wrap{max-width:100%;padding:0;}
+    .report-hdr{border:none;padding:0;}
+  }
+</style>
+</head>
+<body>
+<div class="hdr no-print"><div class="wrap">
+  <div class="brand">
+    <img src="assets/logo.png" alt="SeamFlow Consulting">
+    <div>
+      <h1>Customer Activity</h1>
+      <div class="sub">Internal</div>
+    </div>
+  </div>
+  <div id="hdrActions"></div>
+</div></div>
+
+<div id="gate">
+  <h2>Enter admin key</h2>
+  <p>This page is gated by the ADMIN_KEY set on the server. It isn't linked from anywhere else on the site.</p>
+  <input type="password" id="keyInput" placeholder="Admin key">
+  <button class="btn btn-gold" id="unlockBtn" style="width:100%;">Unlock</button>
+  <div class="err" id="gateErr">Incorrect key. Try again.</div>
+</div>
+
+<div class="wrap" id="app" style="display:none;"></div>
+
+<script>
+const KEY_STORAGE = "seamflow_admin_key";
+let adminKey = sessionStorage.getItem(KEY_STORAGE) || "";
+let submissions = [];
+let enquiries = [];
+let currentTab = "submissions"; // submissions | enquiries | grant
+
+async function api(path){
+  const res = await fetch(path, { headers: { "x-admin-key": adminKey } });
+  if(res.status === 401) throw new Error("unauthorized");
+  if(!res.ok) throw new Error("request failed");
+  return res.json();
+}
+
+async function apiPost(path, data){
+  const res = await fetch(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-admin-key": adminKey },
+    body: JSON.stringify(data)
+  });
+  if(res.status === 401) throw new Error("unauthorized");
+  const json = await res.json().catch(() => ({}));
+  if(!res.ok) throw new Error(json.error || "request failed");
+  return json;
+}
+
+function showGate(err){
+  document.getElementById("gate").style.display = "block";
+  document.getElementById("app").style.display = "none";
+  document.getElementById("hdrActions").innerHTML = "";
+  const errEl = document.getElementById("gateErr");
+  errEl.textContent = err === true ? "Incorrect key. Try again." : (err || "");
+  errEl.style.display = err ? "block" : "none";
+}
+
+function showApp(){
+  document.getElementById("gate").style.display = "none";
+  document.getElementById("app").style.display = "block";
+}
+
+async function loadList(){
+  try{
+    const [subsData, enquiryData] = await Promise.all([
+      api("/api/admin-submissions"),
+      api("/api/admin-enquiries")
+    ]);
+    enquiries = enquiryData.items || [];
+    submissions = subsData.items || [];
+    showApp();
+    renderTabView();
+  }catch(e){
+    if(e.message === "unauthorized"){
+      sessionStorage.removeItem(KEY_STORAGE);
+      showGate(true);
+    } else {
+      showGate("Your key was not rejected, but the server could not load the data. Try again shortly.");
+    }
+  }
+}
+
+function scoreColor(score){ if(score<40) return "#C0392B"; if(score<70) return "#F5A800"; return "#1E8E5A"; }
+
+function tabsBar(){
+  return `
+    <div class="tabs">
+      <button class="tab ${currentTab==='submissions'?'active':''}" data-tab="submissions">Assessment Submissions (${submissions.length})</button>
+      <button class="tab ${currentTab==='enquiries'?'active':''}" data-tab="enquiries">Enquiries (${enquiries.length})</button>
+      <button class="tab ${currentTab==='grant'?'active':''}" data-tab="grant">Grant Access</button>
+    </div>`;
+}
+
+function attachTabHandlers(){
+  document.querySelectorAll(".tab").forEach(el => {
+    el.onclick = () => { currentTab = el.getAttribute("data-tab"); renderTabView(); };
+  });
+}
+
+function renderTabView(){
+  document.getElementById("hdrActions").innerHTML = "";
+  if(currentTab === "submissions") renderList();
+  else if(currentTab === "enquiries") renderEnquiries();
+  else renderGrantAccess();
+}
+
+function renderList(){
+  const app = document.getElementById("app");
+  const body = submissions.length === 0
+    ? '<div class="empty">No assessment submissions yet. They’ll show up here as clients complete their Business Systems Assessment.</div>'
+    : `
+    <div class="table-card"><table>
+      <thead><tr><th>Submitted</th><th>Facility</th><th>Role</th><th>Email</th><th>Assessment</th><th>Score</th></tr></thead>
+      <tbody>
+        ${submissions.map(s => `
+          <tr class="row" data-id="${s.id}">
+            <td>${new Date(s.submittedAt).toLocaleString()}</td>
+            <td>${s.facility || "—"}</td>
+            <td>${s.role || "—"}</td>
+            <td>${s.email || "—"}</td>
+            <td>${s.type === "focused" ? "Focused — " + (s.deptNames?.[0] || "1 department") : s.type === "comprehensive" ? "Comprehensive" : s.deptCount + " depts (legacy)"}</td>
+            <td><span class="score-pill" style="background:${scoreColor(s.overall)}22;color:${scoreColor(s.overall)};">${s.overall}/100</span></td>
+          </tr>`).join("")}
+      </tbody>
+    </table></div>`;
+  app.innerHTML = tabsBar() + body;
+  attachTabHandlers();
+  document.querySelectorAll("tr.row").forEach(row => {
+    row.onclick = () => loadDetail(row.getAttribute("data-id"));
+  });
+}
+
+// Everything in an enquiry is typed by a website visitor, so escape it.
+function esc(value){
+  return String(value == null ? "" : value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+const INTEREST_LABELS = {
+  unsure: "Not sure yet", assessment: "Business Systems Assessment", focused: "Focused Assessment",
+  comprehensive: "Comprehensive Assessment", structure: "Structure", growth: "Growth"
+};
+
+function renderEnquiries(){
+  const app = document.getElementById("app");
+  const body = enquiries.length === 0
+    ? '<div class="empty">No enquiries yet. Messages sent through the website contact form will show up here.</div>'
+    : enquiries.map(q => `
+      <article class="enquiry">
+        <div class="enquiry-head">
+          <div>
+            <div class="who">${esc(q.name)}${q.facility ? " — " + esc(q.facility) : ""}</div>
+            <div class="meta">${[q.role, q.business_type, q.location, q.employees ? q.employees + " employees" : ""].filter(Boolean).map(esc).join(" · ") || "No business details given"}</div>
+          </div>
+          <div class="when">${new Date(q.submittedAt).toLocaleString()}</div>
+        </div>
+        <div class="enquiry-contact">
+          <a href="mailto:${esc(q.email)}">${esc(q.email)}</a>${q.phone ? " · " + esc(q.phone) : ""}
+          ${q.interest ? `<span class="usage-type access">${esc(INTEREST_LABELS[q.interest] || q.interest)}</span>` : ""}
+        </div>
+        <p class="enquiry-msg">${esc(q.message) || "<em>No message written.</em>"}</p>
+      </article>`).join("");
+  app.innerHTML = tabsBar() + body;
+  attachTabHandlers();
+}
+
+let clarityCatalog = null; // [{ key, title, depts:[{key,name}] }] — loaded once for the grant form
+
+async function renderGrantAccess(){
+  const app = document.getElementById("app");
+  if(!clarityCatalog){
+    app.innerHTML = tabsBar() + '<div class="empty">Loading…</div>';
+    attachTabHandlers();
+    try{
+      clarityCatalog = (await api("/api/admin-grant-access")).categories || [];
+    }catch(e){
+      app.innerHTML = tabsBar() + '<div class="empty">Could not load the department list. Refresh and try again.</div>';
+      attachTabHandlers();
+      return;
+    }
+    if(currentTab !== "grant") return;
+  }
+  const deptName = key => clarityCatalog.flatMap(c => c.depts).find(d => d.key === key)?.name || key;
+
+  app.innerHTML = tabsBar() + `
+    <p style="color:var(--grey);font-size:14.5px;max-width:680px;margin:0 0 22px;">Nothing is paid for on the website. Once a client's payment is confirmed, enter their email below and choose what they paid for to generate their personal access link, then send the link to that email.</p>
+    <div class="grant-form">
+      <div class="field">
+        <label>Client email</label>
+        <input type="email" id="grantEmail" placeholder="client@facility.com">
+      </div>
+      <div class="field">
+        <label>Facility name (optional)</label>
+        <input type="text" id="grantFacility" placeholder="e.g. Grace Specialist Hospital">
+      </div>
+      <div class="field">
+        <label>What they paid for</label>
+        <label class="choice"><input type="radio" name="clarityScope" value="comprehensive" checked> Comprehensive Assessment — all 22 departments</label>
+        <label class="choice"><input type="radio" name="clarityScope" value="focused"> Focused Assessment(s) — choose departments</label>
+        <div class="dept-picker" id="deptPicker" style="display:none;">
+          ${clarityCatalog.map(c => `
+            <div class="cat">${c.title}</div>
+            <div class="dept-grid">
+              ${c.depts.map(d => `<label><input type="checkbox" class="deptCheck" value="${d.key}"> ${d.name}</label>`).join("")}
+            </div>`).join("")}
+        </div>
+      </div>
+      <button class="btn btn-gold" id="generateGrantBtn">Generate Access Link</button>
+      <div class="grant-err" id="grantErr"></div>
+      <div class="grant-links" id="grantLinks" style="display:none;"></div>
+    </div>`;
+  attachTabHandlers();
+
+  document.querySelectorAll("input[name=clarityScope]").forEach(el => {
+    el.onchange = () => {
+      document.getElementById("deptPicker").style.display = el.value === "focused" && el.checked ? "block" : "none";
+    };
+  });
+
+  document.getElementById("generateGrantBtn").onclick = async () => {
+    const email = document.getElementById("grantEmail").value.trim();
+    const facility = document.getElementById("grantFacility").value.trim();
+    const scope = document.querySelector("input[name=clarityScope]:checked").value;
+    const depts = [...document.querySelectorAll(".deptCheck:checked")].map(el => el.value);
+    const plans = ["clarity"];
+    const errEl = document.getElementById("grantErr");
+    errEl.style.display = "none";
+
+    if(!email || !email.includes("@")){
+      errEl.textContent = "Enter a valid email address.";
+      errEl.style.display = "block";
+      return;
+    }
+    if(scope === "focused" && depts.length === 0){
+      errEl.textContent = "Select at least one department for the Focused Assessment.";
+      errEl.style.display = "block";
+      return;
+    }
+    try{
+      const payload = { email, facility, plans, clarity: { scope, depts } };
+      const { links } = await apiPost("/api/admin-grant-access", payload);
+      const describe = () => scope === "comprehensive"
+        ? "Comprehensive Assessment"
+        : "Focused Assessment — " + depts.map(deptName).join(", ");
+      const linksEl = document.getElementById("grantLinks");
+      linksEl.style.display = "block";
+      linksEl.innerHTML = `<div style="font-size:13.5px;color:var(--grey);margin-bottom:4px;">Access created for <strong>${email}</strong>. Copy the link and send it to them — it is not emailed automatically.</div>` + links.map(l => `
+        <div class="link-row" style="flex-direction:column;align-items:flex-start;">
+          <span style="font-weight:700;">${describe()}</span>
+          <code>${location.origin}${l.url}</code>
+        </div>`).join("");
+    }catch(e){
+      errEl.textContent = e.message && e.message !== "request failed" ? e.message : "Could not generate the link. Try again.";
+      errEl.style.display = "block";
+    }
+  };
+}
+
+async function loadDetail(id){
+  try{
+    const record = await api(`/api/admin-submissions?id=${encodeURIComponent(id)}`);
+    renderDetail(record);
+  }catch(e){
+    if(e.message === "unauthorized"){
+      sessionStorage.removeItem(KEY_STORAGE);
+      showGate(true);
+    } else {
+      showGate("Your key was not rejected, but the server could not load the data. Try again shortly.");
+    }
+  }
+}
+
+function renderDetail(r){
+  const sorted = [...r.deptScores].sort((a,b) => a.score - b.score);
+  const bottomThree = sorted.slice(0,3);
+  const color = scoreColor(r.overall);
+
+  document.getElementById("hdrActions").innerHTML = `<button class="btn btn-ghost no-print" id="backBtn">‹ All submissions</button>`;
+  document.getElementById("app").innerHTML = `
+    <div class="report-hdr">
+      <div class="facility">${r.facility || "Untitled facility"}</div>
+      <div class="meta">
+        ${r.role || "Role not given"} · ${r.email || "no email on file"}<br>
+        Submitted ${new Date(r.submittedAt).toLocaleString()} · ${r.type === "focused" ? "Focused Assessment — " + r.deptScores[0].name : r.selectedDepts.length + " department" + (r.selectedDepts.length>1?"s":"") + " assessed"}
+      </div>
+    </div>
+
+    <div class="gauge-wrap">
+      <div class="gauge-score">${r.overall}<span>/100</span></div>
+      <div class="maturity-badge" style="background:${color}22;border:1.5px solid ${color};color:${color};">
+        ${r.tierLabel}${r.tierLabel === r.tierStage ? "" : ` <span style="opacity:0.7;font-weight:600;">· ${r.tierStage} tier</span>`}
+      </div>
+    </div>
+
+    ${sorted.length > 1 ? `<div class="priority-box">
+      <div class="p-label">Top Priority Gaps</div>
+      <ol>${bottomThree.map(d => `<li><strong>${d.name}</strong> — ${d.score}/100</li>`).join("")}</ol>
+    </div>` : ""}
+
+    <div class="section-label">Department Breakdown</div>
+    ${sorted.map(d => `
+      <div class="domain-bar-row">
+        <div class="domain-bar-head"><span>${d.name}</span><span class="pct">${d.score}%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${d.score}%;background:${scoreColor(d.score)};"></div></div>
+      </div>`).join("")}
+
+    <div class="actions no-print">
+      <button class="btn btn-primary" id="printBtn">Print / Save as PDF</button>
+    </div>`;
+
+  document.getElementById("backBtn").onclick = () => { renderTabView(); };
+  document.getElementById("printBtn").onclick = () => window.print();
+}
+
+document.getElementById("unlockBtn").onclick = async () => {
+  adminKey = document.getElementById("keyInput").value.trim();
+  if(!adminKey) return;
+  sessionStorage.setItem(KEY_STORAGE, adminKey);
+  await loadList();
+};
+document.getElementById("keyInput").addEventListener("keydown", (e) => {
+  if(e.key === "Enter") document.getElementById("unlockBtn").click();
+});
+
+if(adminKey){ loadList(); } else { showGate(false); }
+</script>
+</body>
+</html>

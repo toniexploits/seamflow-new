@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | SeamFlow Consulting</title>
+<meta name="description" content="Tell SeamFlow Consulting about your healthcare business and the operational challenges you would like to address. We work with healthcare SMEs across Nigeria.">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand" aria-label="SeamFlow Consulting home">
+      <img src="assets/logo.png" alt="SeamFlow Consulting. Clarity. Structure. Growth." width="783" height="285">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active" aria-current="page">Contact</a>
+      <a href="contact.html?interest=assessment" class="nav-cta">Book an Assessment</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html?interest=assessment" class="cta-row">Book an Assessment &rarr;</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-hero on-navy traces">
+  <div class="wrap">
+    <div class="eyebrow">Contact Us</div>
+    <h1>We would be glad <em>to hear from you.</em></h1>
+    <p class="lede">Whether you are looking to understand your current operational health, strengthen a specific system, redesign your processes, implement SOPs, or prepare your healthcare business for sustainable growth, we would be glad to hear from you.</p>
+    <p style="margin-top:1.2em;max-width:46em;">At SeamFlow Consulting, we work with healthcare SMEs across Nigeria to identify operational gaps, build stronger systems and processes, and create the foundation for sustainable growth.</p>
+  </div>
+</section>
+
+<!-- ===================== FORM + DIRECT ===================== -->
+<section class="section">
+  <div class="wrap split lean-left">
+
+    <div class="form-card reveal" id="enquiry">
+      <h2 style="font-size:clamp(1.7rem,3vw,2.4rem);">Tell us what your healthcare business needs are.</h2>
+      <p style="margin-bottom:32px;color:var(--grey);">Complete the form below and tell us a little about your organization and the challenges you would like to address.</p>
+
+      <form id="inquiryForm" action="/api/submit-enquiry" method="POST">
+        <input type="text" name="company_website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <fieldset>
+          <legend>About You</legend>
+          <div class="field-grid">
+            <div class="field">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="role">Job Title / Role</label>
+              <input type="text" id="role" name="role" autocomplete="organization-title">
+            </div>
+            <div class="field full">
+              <label for="facility">Organization / Facility Name</label>
+              <input type="text" id="facility" name="facility" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone / WhatsApp Number</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>About Your Business</legend>
+          <div class="field-grid">
+            <div class="field">
+              <label for="business_type">Type of Healthcare Business</label>
+              <select id="business_type" name="business_type">
+                <option value="" selected disabled>Select one</option>
+                <option>Hospital</option>
+                <option>Clinic</option>
+                <option>Primary healthcare center</option>
+                <option>Specialist practice</option>
+                <option>Diagnostic center</option>
+                <option>Medical laboratory</option>
+                <option>Pharmacy</option>
+                <option>Other healthcare business</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" placeholder="City, State" autocomplete="address-level2">
+            </div>
+            <div class="field">
+              <label for="employees">Approximate Number of Employees</label>
+              <select id="employees" name="employees">
+                <option value="" selected disabled>Select one</option>
+                <option>1&ndash;10</option>
+                <option>11&ndash;25</option>
+                <option>26&ndash;50</option>
+                <option>51&ndash;100</option>
+                <option>More than 100</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="interest">What You Need Help With</label>
+              <select id="interest" name="interest">
+                <option value="unsure">Not sure yet &mdash; need guidance</option>
+                <option value="assessment">Business Systems Assessment</option>
+                <option value="focused">Focused Assessment</option>
+                <option value="comprehensive">Comprehensive Assessment</option>
+                <option value="structure">Structure &mdash; systems, processes &amp; SOPs</option>
+                <option value="growth">Growth &mdash; strategy &amp; scale</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us a little about your organization and the challenges you would like to address."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-navy btn-block" id="enquirySubmit">Submit Enquiry</button>
+        <p class="form-error" id="enquiryError" role="alert" hidden></p>
+      </form>
+      <p class="fine-print" style="margin-top:16px;">By submitting, you agree to be contacted by SeamFlow Consulting about your enquiry.</p>
+    </div>
+
+    <aside class="sticky reveal">
+      <div class="eyebrow">Prefer to reach us directly?</div>
+      <ul class="direct">
+        <li>
+          <small>Email</small>
+          <a href="mailto:seamflowconsulting@gmail.com">seamflowconsulting@gmail.com</a>
+          <a href="mailto:info@seamflowconsulting.com.ng">info@seamflowconsulting.com.ng</a>
+        </li>
+        <li>
+          <small>Website</small>
+          <a href="https://seamflowconsulting.com.ng">seamflowconsulting.com.ng</a>
+        </li>
+        <li>
+          <small>LinkedIn</small>
+          <a href="https://www.linkedin.com/in/akunna-mbanefo" target="_blank" rel="noopener noreferrer">linkedin.com/in/akunna-mbanefo</a>
+        </li>
+      </ul>
+      <figure class="frame offset ratio-43" style="margin:40px 16px 0 0;">
+        <img src="assets/contact-img.jpg" alt="A discovery conversation with a healthcare business owner" width="1200" height="900" loading="lazy">
+      </figure>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ===================== WHAT HAPPENS NEXT ===================== -->
+<section class="section on-paper2">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What happens next?</div>
+      <h2>Once we receive <em>your enquiry.</em></h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><span class="step-n" aria-hidden="true"></span><h3>We Review</h3><p>We review the information you have provided to understand your needs.</p></div>
+      <div class="step"><span class="step-n" aria-hidden="true"></span><h3>We Connect</h3><p>Where appropriate, we arrange a discovery call to understand your organization and objectives in more detail.</p></div>
+      <div class="step"><span class="step-n" aria-hidden="true"></span><h3>We Recommend</h3><p>We determine the most appropriate starting point based on your specific needs.</p></div>
+      <div class="step"><span class="step-n" aria-hidden="true"></span><h3>We Propose</h3><p>Where a consulting engagement is appropriate, we provide a tailored proposal outlining the scope, deliverables and investment.</p></div>
+    </div>
+    <p class="svc-answer reveal" style="margin-top:20px;">Our approach is always tailored to the needs of <em>your healthcare business.</em></p>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="section on-navy traces cta-band">
+  <div class="wrap reveal">
+    <div class="eyebrow">Have a specific operational challenge?</div>
+    <h2>You don&rsquo;t need to have everything figured out <em>before reaching out.</em></h2>
+    <p class="lede">Perhaps you know that something isn&rsquo;t working as it should, but you are not yet sure where the problem lies. Let&rsquo;s understand the problem, identify what needs to change, and determine the right path forward.</p>
+    <p class="tm-line" style="margin-bottom:34px;">Clarity. Structure. Growth.&trade;</p>
+    <div class="btn-row">
+      <a href="#enquiry" class="btn btn-gold">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="SeamFlow Consulting. Clarity. Structure. Growth." width="783" height="285" loading="lazy">
+        <p>Healthcare Systems. Stronger Operations. Sustainable Growth.</p>
+        <p>Serving healthcare businesses across Nigeria.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Site</h5>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html#clarity">Clarity</a>
+        <a href="services.html#structure">Structure</a>
+        <a href="services.html#growth">Growth</a>
+        <a href="index.html#assessment">Business Systems Assessment</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get in touch</h5>
+        <a href="mailto:info@seamflowconsulting.com.ng">info@seamflowconsulting.com.ng</a>
+        <a href="mailto:seamflowconsulting@gmail.com">seamflowconsulting@gmail.com</a>
+        <a href="https://www.linkedin.com/in/akunna-mbanefo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SeamFlow Consulting. All rights reserved.</span>
+      <span>Clarity. Structure. Growth.&trade;</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+  // Send the enquiry in the background so the visitor stays on this site.
+  (function(){
+    var form = document.getElementById('inquiryForm');
+    var button = document.getElementById('enquirySubmit');
+    var error = document.getElementById('enquiryError');
+    if(!form || !window.fetch) return; // falls back to a normal form post
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = {};
+      new FormData(form).forEach(function(value, key){ data[key] = value; });
+      error.hidden = true;
+      button.disabled = true;
+      button.textContent = 'Sending\u2026';
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function(res){
+        return res.json().catch(function(){ return {}; }).then(function(body){
+          if(!res.ok) throw new Error(body.error || '');
+          location.href = 'thank-you.html';
+        });
+      }).catch(function(err){
+        error.textContent = (err.message || 'We could not send your enquiry.') + ' Please try again, or email us at info@seamflowconsulting.com.ng.';
+        error.hidden = false;
+        button.disabled = false;
+        button.textContent = 'Submit Enquiry';
+      });
+    });
+  })();
+  (function(){
+    var params = new URLSearchParams(location.search);
+    var interest = params.get('interest');
+    if(!interest) return;
+    var select = document.getElementById('interest');
+    if(select && [].some.call(select.options, function(o){ return o.value === interest; })) select.value = interest;
+    // Arriving from a specific Focused Assessment on the Services page
+    var dept = params.get('dept');
+    var message = document.getElementById('message');
+    if(dept && message && !message.value) message.value = 'I would like to book a Focused Assessment for: ' + dept + '.';
+  })();
+</script>
+</body>
+</html>
